@@ -16,16 +16,16 @@ const TaskList = ({ data }) => {
                 <div className='flex space-x-6 pb-4 min-w-max'>
                     {data.tasks.map((elem, idx) => {
                         if (elem.active) {
-                            return <AcceptTask key={idx} data={elem} />
+                            return <AcceptTask key={elem.id || idx} data={elem} employeeData={data} />
                         }
                         if (elem.newTask) {
-                            return <NewTask key={idx} data={elem} />
+                            return <NewTask key={elem.id || idx} data={elem} employeeData={data} />
                         }
                         if (elem.completed) {
-                            return <CompleteTask key={idx} data={elem} />
+                            return <CompleteTask key={elem.id || idx} data={elem} employeeData={data} />
                         }
                         if (elem.failed) {
-                            return <FailedTask key={idx} data={elem} />
+                            return <FailedTask key={elem.id || idx} data={elem} employeeData={data} />
                         }
                         return null;
                     })}

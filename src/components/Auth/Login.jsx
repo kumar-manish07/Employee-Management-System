@@ -96,7 +96,7 @@ const Login = ({handleLogin}) => {
                     <h3 className='text-sm font-medium text-gray-300 mb-2'>Demo Credentials:</h3>
                     <div className='text-xs text-gray-400 space-y-1'>
                         <p><span className='text-emerald-400'>Admin:</span> admin@me.com / 123</p>
-                        <p><span className='text-emerald-400'>Employee:</span> Use any employee email / password</p>
+                        <p><span className='text-emerald-400'>Employee:</span> Use any employee email / 123</p>
                     </div>
                 </div>
             </div>

@@ -13,6 +13,7 @@ const employees = [
         },
         "tasks": [
             {
+                "id": 1001,
                 "active": true,
                 "newTask": true,
                 "completed": false,
@@ -20,7 +21,9 @@ const employees = [
                 "taskTitle": "Update website",
                 "taskDescription": "Revamp the homepage design",
                 "taskDate": "2024-10-12",
-                "category": "Design" 
+                "category": "Design",
+                "createdAt": "2024-10-01T10:00:00.000Z",
+                "assignedBy": "Admin"
             },
             {
                 "active": false,

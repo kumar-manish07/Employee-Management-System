@@ -11,25 +11,62 @@ const CreateTask = () => {
     const [asignTo, setAsignTo] = useState('')
     const [category, setCategory] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
-
-    const [newTask, setNewTask] = useState({})
+    const [message, setMessage] = useState('')
 
     const submitHandler = (e) => {
         e.preventDefault()
         setIsSubmitting(true)
+        setMessage('')
 
-        setNewTask({ taskTitle, taskDescription, taskDate, category, active: false, newTask: true, failed: false, completed: false })
+        // Create the new task object
+        const newTask = {
+            id: Date.now(), // Generate unique ID
+            taskTitle,
+            taskDescription,
+            taskDate,
+            category,
+            active: false,
+            newTask: true,
+            failed: false,
+            completed: false,
+            createdAt: new Date().toISOString(),
+            assignedBy: 'Admin'
+        }
 
-        const data = userData
-
-        data.forEach(function (elem) {
-            if (asignTo == elem.firstName) {
-                elem.tasks.push(newTask)
-                elem.taskCounts.newTask = elem.taskCounts.newTask + 1
+        // Find the employee and assign the task
+        const updatedUserData = userData.map(employee => {
+            if (employee.firstName.toLowerCase() === asignTo.toLowerCase()) {
+                return {
+                    ...employee,
+                    tasks: [...employee.tasks, newTask],
+                    taskCounts: {
+                        ...employee.taskCounts,
+                        newTask: employee.taskCounts.newTask + 1
+                    }
+                }
             }
+            return employee
         })
-        setUserData(data)
-        console.log(data);
+
+        // Check if employee was found
+        const employeeFound = updatedUserData.some(emp => 
+            emp.firstName.toLowerCase() === asignTo.toLowerCase()
+        )
+
+        if (!employeeFound) {
+            setMessage('Employee not found! Please check the employee name.')
+            setIsSubmitting(false)
+            return
+        }
+
+        // Update the state
+        setUserData(updatedUserData)
+
+        // Save to localStorage
+        localStorage.setItem('employees', JSON.stringify(updatedUserData))
+
+        // Show success message
+        setMessage('Task created successfully!')
 
         // Reset form
         setTaskTitle('')
@@ -38,10 +75,11 @@ const CreateTask = () => {
         setTaskDate('')
         setTaskDescription('')
         
-        // Simulate loading
+        // Hide success message after 3 seconds
         setTimeout(() => {
+            setMessage('')
             setIsSubmitting(false)
-        }, 1000)
+        }, 3000)
     }
 
     return (
@@ -50,6 +88,17 @@ const CreateTask = () => {
                 <h2 className='text-2xl font-bold text-white mb-2'>Create New Task</h2>
                 <p className='text-gray-400'>Assign tasks to your team members</p>
             </div>
+
+            {/* Success/Error Message */}
+            {message && (
+                <div className={`mb-6 p-4 rounded-xl ${
+                    message.includes('successfully') 
+                        ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-400' 
+                        : 'bg-red-500/20 border border-red-500/30 text-red-400'
+                }`}>
+                    {message}
+                </div>
+            )}
             
             <form onSubmit={submitHandler} className='space-y-6'>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
@@ -80,14 +129,19 @@ const CreateTask = () => {
                         
                         <div>
                             <label className='block text-sm font-medium text-gray-300 mb-2'>Assign To</label>
-                            <input
+                            <select
                                 value={asignTo}
                                 onChange={(e) => setAsignTo(e.target.value)}
                                 required
-                                className='w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200' 
-                                type="text" 
-                                placeholder='Employee name'
-                            />
+                                className='w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200'
+                            >
+                                <option value="">Select employee</option>
+                                {userData && userData.map((employee, index) => (
+                                    <option key={index} value={employee.firstName}>
+                                        {employee.firstName} ({employee.email})
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                         
                         <div>
@@ -104,6 +158,8 @@ const CreateTask = () => {
                                 <option value="marketing">Marketing</option>
                                 <option value="content">Content</option>
                                 <option value="testing">Testing</option>
+                                <option value="meeting">Meeting</option>
+                                <option value="documentation">Documentation</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>

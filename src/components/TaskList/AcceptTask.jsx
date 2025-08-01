@@ -46,8 +46,10 @@ const AcceptTask = ({data, employeeData}) => {
         setUserData(updatedUserData)
         localStorage.setItem('employees', JSON.stringify(updatedUserData))
         
-        // Show success message
-        alert('Task completed successfully!')
+        // Force a re-render by updating the context
+        setTimeout(() => {
+            window.location.reload()
+        }, 500)
     }
 
     const handleFailTask = () => {
@@ -92,8 +94,10 @@ const AcceptTask = ({data, employeeData}) => {
         setUserData(updatedUserData)
         localStorage.setItem('employees', JSON.stringify(updatedUserData))
         
-        // Show success message
-        alert('Task marked as failed!')
+        // Force a re-render by updating the context
+        setTimeout(() => {
+            window.location.reload()
+        }, 500)
     }
 
     return (

@@ -6,6 +6,7 @@ const NewTask = ({data, employeeData}) => {
 
     const handleAcceptTask = () => {
         console.log('Accept task clicked for:', data)
+        console.log('Employee data:', employeeData)
         
         // Find the employee who owns this task
         const updatedUserData = userData.map(employee => {
@@ -23,7 +24,7 @@ const NewTask = ({data, employeeData}) => {
                     return task
                 })
                 
-                return {
+                const updatedEmployee = {
                     ...employee,
                     tasks: updatedTasks,
                     taskCounts: {
@@ -32,6 +33,9 @@ const NewTask = ({data, employeeData}) => {
                         active: employee.taskCounts.active + 1
                     }
                 }
+                
+                console.log('Updated employee:', updatedEmployee)
+                return updatedEmployee
             }
             return employee
         })
@@ -42,8 +46,8 @@ const NewTask = ({data, employeeData}) => {
         setUserData(updatedUserData)
         localStorage.setItem('employees', JSON.stringify(updatedUserData))
         
-        // Force a page refresh to see the changes
-        window.location.reload()
+        // Show success message
+        alert('Task accepted successfully!')
     }
 
     return (

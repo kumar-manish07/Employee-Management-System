@@ -6,6 +6,7 @@ const AcceptTask = ({data, employeeData}) => {
 
     const handleCompleteTask = () => {
         console.log('Complete task clicked for:', data)
+        console.log('Employee data:', employeeData)
         
         // Find the employee who owns this task
         const updatedUserData = userData.map(employee => {
@@ -23,7 +24,7 @@ const AcceptTask = ({data, employeeData}) => {
                     return task
                 })
                 
-                return {
+                const updatedEmployee = {
                     ...employee,
                     tasks: updatedTasks,
                     taskCounts: {
@@ -32,6 +33,9 @@ const AcceptTask = ({data, employeeData}) => {
                         completed: employee.taskCounts.completed + 1
                     }
                 }
+                
+                console.log('Updated employee:', updatedEmployee)
+                return updatedEmployee
             }
             return employee
         })
@@ -42,12 +46,13 @@ const AcceptTask = ({data, employeeData}) => {
         setUserData(updatedUserData)
         localStorage.setItem('employees', JSON.stringify(updatedUserData))
         
-        // Force a page refresh to see the changes
-        window.location.reload()
+        // Show success message
+        alert('Task completed successfully!')
     }
 
     const handleFailTask = () => {
         console.log('Fail task clicked for:', data)
+        console.log('Employee data:', employeeData)
         
         // Find the employee who owns this task
         const updatedUserData = userData.map(employee => {
@@ -65,7 +70,7 @@ const AcceptTask = ({data, employeeData}) => {
                     return task
                 })
                 
-                return {
+                const updatedEmployee = {
                     ...employee,
                     tasks: updatedTasks,
                     taskCounts: {
@@ -74,6 +79,9 @@ const AcceptTask = ({data, employeeData}) => {
                         failed: employee.taskCounts.failed + 1
                     }
                 }
+                
+                console.log('Updated employee:', updatedEmployee)
+                return updatedEmployee
             }
             return employee
         })
@@ -84,8 +92,8 @@ const AcceptTask = ({data, employeeData}) => {
         setUserData(updatedUserData)
         localStorage.setItem('employees', JSON.stringify(updatedUserData))
         
-        // Force a page refresh to see the changes
-        window.location.reload()
+        // Show success message
+        alert('Task marked as failed!')
     }
 
     return (

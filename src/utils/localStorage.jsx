@@ -26,6 +26,7 @@ const employees = [
                 "assignedBy": "Admin"
             },
             {
+                "id": 1002,
                 "active": false,
                 "newTask": false,
                 "completed": true,
@@ -33,9 +34,12 @@ const employees = [
                 "taskTitle": "Client meeting",
                 "taskDescription": "Discuss project requirements",
                 "taskDate": "2024-10-10",
-                "category": "Meeting"
+                "category": "Meeting",
+                "createdAt": "2024-10-01T09:00:00.000Z",
+                "assignedBy": "Admin"
             },
             {
+                "id": 1003,
                 "active": true,
                 "newTask": false,
                 "completed": false,
@@ -43,7 +47,9 @@ const employees = [
                 "taskTitle": "Fix bugs",
                 "taskDescription": "Resolve bugs reported in issue tracker",
                 "taskDate": "2024-10-14",
-                "category": "Development"
+                "category": "Development",
+                "createdAt": "2024-10-01T11:00:00.000Z",
+                "assignedBy": "Admin"
             }
         ]
     },
@@ -60,6 +66,7 @@ const employees = [
         },
         "tasks": [
             {
+                "id": 2001,
                 "active": true,
                 "newTask": false,
                 "completed": false,
@@ -67,9 +74,12 @@ const employees = [
                 "taskTitle": "Database optimization",
                 "taskDescription": "Optimize queries for better performance",
                 "taskDate": "2024-10-11",
-                "category": "Database"
+                "category": "Database",
+                "createdAt": "2024-10-01T12:00:00.000Z",
+                "assignedBy": "Admin"
             },
             {
+                "id": 2002,
                 "active": false,
                 "newTask": false,
                 "completed": true,
@@ -77,7 +87,9 @@ const employees = [
                 "taskTitle": "Design new feature",
                 "taskDescription": "Create mockups for the new feature",
                 "taskDate": "2024-10-09",
-                "category": "Design"
+                "category": "Design",
+                "createdAt": "2024-10-01T13:00:00.000Z",
+                "assignedBy": "Admin"
             }
         ]
     },
@@ -94,6 +106,7 @@ const employees = [
         },
         "tasks": [
             {
+                "id": 3001,
                 "active": true,
                 "newTask": true,
                 "completed": false,
@@ -101,9 +114,12 @@ const employees = [
                 "taskTitle": "Prepare presentation",
                 "taskDescription": "Prepare slides for upcoming client presentation",
                 "taskDate": "2024-10-13",
-                "category": "Presentation"
+                "category": "Presentation",
+                "createdAt": "2024-10-01T14:00:00.000Z",
+                "assignedBy": "Admin"
             },
             {
+                "id": 3002,
                 "active": true,
                 "newTask": false,
                 "completed": false,
@@ -111,9 +127,12 @@ const employees = [
                 "taskTitle": "Code review",
                 "taskDescription": "Review the codebase for optimization",
                 "taskDate": "2024-10-12",
-                "category": "Development"
+                "category": "Development",
+                "createdAt": "2024-10-01T15:00:00.000Z",
+                "assignedBy": "Admin"
             },
             {
+                "id": 3003,
                 "active": false,
                 "newTask": false,
                 "completed": true,
@@ -121,7 +140,9 @@ const employees = [
                 "taskTitle": "Testing",
                 "taskDescription": "Test the latest build for bugs",
                 "taskDate": "2024-10-08",
-                "category": "QA"
+                "category": "QA",
+                "createdAt": "2024-10-01T16:00:00.000Z",
+                "assignedBy": "Admin"
             }
         ]
     },
@@ -138,6 +159,7 @@ const employees = [
         },
         "tasks": [
             {
+                "id": 4001,
                 "active": true,
                 "newTask": true,
                 "completed": false,
@@ -145,9 +167,12 @@ const employees = [
                 "taskTitle": "Write documentation",
                 "taskDescription": "Update the project documentation",
                 "taskDate": "2024-10-13",
-                "category": "Documentation"
+                "category": "Documentation",
+                "createdAt": "2024-10-01T17:00:00.000Z",
+                "assignedBy": "Admin"
             },
             {
+                "id": 4002,
                 "active": true,
                 "newTask": false,
                 "completed": false,
@@ -155,7 +180,9 @@ const employees = [
                 "taskTitle": "Set up CI/CD",
                 "taskDescription": "Implement continuous integration pipeline",
                 "taskDate": "2024-10-11",
-                "category": "DevOps"
+                "category": "DevOps",
+                "createdAt": "2024-10-01T18:00:00.000Z",
+                "assignedBy": "Admin"
             }
         ]
     },
@@ -172,6 +199,7 @@ const employees = [
         },
         "tasks": [
             {
+                "id": 5001,
                 "active": true,
                 "newTask": true,
                 "completed": false,
@@ -179,9 +207,12 @@ const employees = [
                 "taskTitle": "UI redesign",
                 "taskDescription": "Redesign the user interface for better UX",
                 "taskDate": "2024-10-14",
-                "category": "Design"
+                "category": "Design",
+                "createdAt": "2024-10-01T19:00:00.000Z",
+                "assignedBy": "Admin"
             },
             {
+                "id": 5002,
                 "active": false,
                 "newTask": false,
                 "completed": true,
@@ -189,9 +220,12 @@ const employees = [
                 "taskTitle": "Deploy new build",
                 "taskDescription": "Deploy the latest build to production",
                 "taskDate": "2024-10-09",
-                "category": "DevOps"
+                "category": "DevOps",
+                "createdAt": "2024-10-01T20:00:00.000Z",
+                "assignedBy": "Admin"
             },
             {
+                "id": 5003,
                 "active": true,
                 "newTask": false,
                 "completed": false,
@@ -199,7 +233,9 @@ const employees = [
                 "taskTitle": "Client feedback",
                 "taskDescription": "Gather feedback from clients after product launch",
                 "taskDate": "2024-10-12",
-                "category": "Support"
+                "category": "Support",
+                "createdAt": "2024-10-01T21:00:00.000Z",
+                "assignedBy": "Admin"
             }
         ]
     }

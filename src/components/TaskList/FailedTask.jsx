@@ -1,20 +1,37 @@
 import React from 'react'
 
-const FailedTask = () => {
+const FailedTask = ({data}) => {
   return (
-    <div className='flex-shrink-0 h-full w-[300px] p-5 bg-yellow-400 rounded-xl'>
-            <div className='flex justify-between items-center'>
-                <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>{data.category}</h3>
-                <h4 className='text-sm'>{data.taskDate}</h4>
+    <div className='flex-shrink-0 w-[320px] bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105'>
+        <div className='flex justify-between items-start mb-4'>
+            <span className='inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-500/20 text-red-400 border border-red-500/30'>
+                {data.category}
+            </span>
+            <span className='text-xs text-gray-400 font-medium'>
+                {new Date(data.taskDate).toLocaleDateString()}
+            </span>
+        </div>
+        
+        <h3 className='text-xl font-bold text-white mb-3 line-clamp-2'>{data.taskTitle}</h3>
+        
+        <p className='text-sm text-gray-300 mb-6 line-clamp-3 leading-relaxed'>
+            {data.taskDescription}
+        </p>
+        
+        <div className='flex items-center justify-between'>
+            <div className='flex items-center space-x-2'>
+                <div className='w-2 h-2 bg-red-400 rounded-full'></div>
+                <span className='text-xs text-red-400 font-medium'>Failed</span>
             </div>
-            <h2 className='mt-5 text-2xl font-semibold'>{data.taskTitle}</h2>
-            <p className='text-sm mt-2'>
-                {data.taskDescription}
-            </p>
-            <div className='mt-6'>
-                <button className='w-full bg-red-500 rounded font-medium py-1 px-2 text-xs'>Failed</button>
+            
+            <div className='flex items-center space-x-1'>
+                <svg className="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className='text-xs text-red-400 font-medium'>Issue</span>
             </div>
         </div>
+    </div>
   )
 }
 

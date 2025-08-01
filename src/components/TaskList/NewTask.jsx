@@ -2,17 +2,34 @@ import React from 'react'
 
 const NewTask = ({data}) => {
     return (
-        <div className='flex-shrink-0 h-full w-[300px] p-5 bg-green-400 rounded-xl'>
-            <div className='flex justify-between items-center'>
-                <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>{data.category}</h3>
-                <h4 className='text-sm'>{data.taskDate}</h4>
+        <div className='flex-shrink-0 w-[320px] bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105'>
+            <div className='flex justify-between items-start mb-4'>
+                <span className='inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400 border border-blue-500/30'>
+                    {data.category}
+                </span>
+                <span className='text-xs text-gray-400 font-medium'>
+                    {new Date(data.taskDate).toLocaleDateString()}
+                </span>
             </div>
-            <h2 className='mt-5 text-2xl font-semibold'>{data.taskTitle}</h2>
-            <p className='text-sm mt-2'>
+            
+            <h3 className='text-xl font-bold text-white mb-3 line-clamp-2'>{data.taskTitle}</h3>
+            
+            <p className='text-sm text-gray-300 mb-6 line-clamp-3 leading-relaxed'>
                 {data.taskDescription}
             </p>
-            <div className='mt-6'>
-                <button className='bg-blue-500 rounded font-medium py-1 px-2 text-xs'>Accept Task</button>
+            
+            <div className='flex items-center justify-between'>
+                <div className='flex items-center space-x-2'>
+                    <div className='w-2 h-2 bg-blue-400 rounded-full animate-pulse'></div>
+                    <span className='text-xs text-blue-400 font-medium'>New Task</span>
+                </div>
+                
+                <button className='bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium py-2 px-4 rounded-xl hover:from-blue-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200 transform hover:scale-105 text-sm flex items-center space-x-2'>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Accept Task</span>
+                </button>
             </div>
         </div>
     )
